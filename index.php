@@ -27,9 +27,9 @@
     </div>
     <script>
         $.ajax({
-            url: "sales_summary.php", // Pastikan URL sesuai
+            url: "sales_summary.php",
             type: 'POST',
-            dataType: 'json', // Pastikan data type adalah JSON
+            dataType: 'json', 
             success: function (response) {
                 if (response.status === "OK") {
                     // Chart 1
@@ -37,7 +37,7 @@
                     var myChart1 = new Chart(ctx1, {
                         type: 'line',
                         data: {
-                            labels: [], // Labels untuk sumbu X
+                            labels: [],
                             datasets: [{
                                 label: "Revenue By Item Group",
                                 fill: false,
@@ -57,7 +57,7 @@
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 1,
                                 pointHitRadius: 10,
-                                data: [], // Data untuk sumbu Y
+                                data: [], 
                                 spanGaps: false,
                             }]
                         },
@@ -97,7 +97,7 @@
                     var myChart2 = new Chart(ctx2, {
                         type: 'line',
                         data: {
-                            labels: [], // Labels untuk sumbu X
+                            labels: [],
                             datasets: [{
                                 label: "Revenue By Country",
                                 fill: false,
@@ -117,7 +117,7 @@
                                 pointHoverBorderWidth: 2,
                                 pointRadius: 1,
                                 pointHitRadius: 10,
-                                data: [], // Data untuk sumbu Y
+                                data: [], 
                                 spanGaps: false,
                             }]
                         },
@@ -158,14 +158,14 @@
                     var values2 = [];
 
                     $.each(response.items, function (i, item) {
-                        labels1.push(item.item); // Menambahkan label untuk sumbu X grafik pertama
-                        values1.push(item.revenue); // Menambahkan data untuk sumbu Y grafik pertama
+                        labels1.push(item.item); 
+                        values1.push(item.revenue); 
 
                         if (labels2.indexOf(item.country) === -1) {
-                            labels2.push(item.country); // Menambahkan label untuk sumbu X grafik kedua
-                            values2.push(item.revenue); // Menambahkan data untuk sumbu Y grafik kedua
+                            labels2.push(item.country); 
+                            values2.push(item.revenue); 
                         } else {
-                            // Jika country sudah ada, akumulasi revenue
+                            
                             var index = labels2.indexOf(item.country);
                             values2[index] += item.revenue;
                         }
