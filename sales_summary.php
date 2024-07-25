@@ -3,10 +3,10 @@ include 'db.php';
 
 try {
     $query = "
-        SELECT 
+  SELECT 
             country,
             item_type AS item, 
-            (units_sold * unit_price - unit_cost * units_sold) AS revenue
+            (units_sold * unit_price) AS revenue
         FROM salesorder
         LIMIT 20
     ";
@@ -19,7 +19,7 @@ try {
     echo json_encode(['status' => 'OK', 'items' => $sales_summary]);
 
 } catch (PDOException $e) {
-    // Debugging: Tampilkan pesan error
+ 
     echo "Error: " . $e->getMessage();
 }
 ?>
