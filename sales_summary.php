@@ -8,7 +8,6 @@ try {
             item_type AS item, 
             (units_sold * unit_price - unit_cost * units_sold) AS revenue
         FROM salesorder
-        WHERE country != 'Tunisia'
         LIMIT 20
     ";
 
